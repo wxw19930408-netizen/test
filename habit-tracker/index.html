@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <title>小习惯 · 每日打卡</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <p class="brand"><span class="brand-dot" aria-hidden="true"></span>小习惯 · DAILY</p>
+        <p class="today" id="todayText">10月18日 · 周六</p>
+      </header>
+
+      <section class="hero">
+        <h1>今天，也为自己<br />做一件小事。</h1>
+        <p class="subtitle">不用追求完美，坚持本身就很了不起。</p>
+      </section>
+
+      <section class="progress-card" aria-labelledby="progressTitle">
+        <div class="progress-copy">
+          <p class="progress-label" id="progressTitle">今日进度</p>
+          <p class="progress-count" aria-live="polite">
+            已完成 <strong id="doneCount">0</strong> 项
+          </p>
+          <p class="progress-hint" id="progressHint">添加第一个习惯，开始今天的打卡。</p>
+          <p class="all-done-badge" id="allDoneBadge" hidden>全部完成 🎉</p>
+        </div>
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 120 120" role="img" aria-label="今日完成比例">
+            <circle class="ring-track" cx="60" cy="60" r="50" />
+            <circle class="ring-value" id="ringValue" cx="60" cy="60" r="50" />
+          </svg>
+          <div class="ring-center">
+            <span class="ring-num" id="ringPercent">0%</span>
+            <span class="ring-sub" id="ringTotal">共 0 项</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="add-card" aria-label="添加习惯">
+        <form id="addForm" class="add-form" autocomplete="off">
+          <span class="add-icon" aria-hidden="true">＋</span>
+          <input
+            id="habitInput"
+            class="add-input"
+            type="text"
+            maxlength="24"
+            placeholder="添加习惯，如：读 20 分钟书"
+            aria-label="新习惯名称"
+            enterkeyhint="done"
+          />
+          <button class="add-btn" type="submit">添加</button>
+        </form>
+      </section>
+
+      <section class="habits-card" aria-labelledby="habitsTitle">
+        <div class="habits-head">
+          <h2 id="habitsTitle">我的习惯</h2>
+          <span class="habits-count" id="habitsCount">0 项</span>
+        </div>
+        <ul class="habit-list" id="habitList"></ul>
+        <div class="empty" id="emptyState">
+          <div class="empty-mark" aria-hidden="true">🌱</div>
+          <p class="empty-title">从一个小习惯开始</p>
+          <p class="empty-text">喝一杯水、读一页书，都算。<br />在上方输入你想坚持的事。</p>
+        </div>
+      </section>
+
+      <section class="history-card" aria-labelledby="historyTitle">
+        <div class="history-head">
+          <div>
+            <h2 id="historyTitle">打卡历史</h2>
+            <p class="history-sub">每一次完成，都算数。</p>
+          </div>
+          <span class="history-count" id="historyCount" aria-live="polite">0 次</span>
+        </div>
+        <div class="history-list" id="historyList"></div>
+        <div class="history-empty" id="historyEmpty">
+          <div class="history-empty-mark" aria-hidden="true">⏳</div>
+          <p>完成第一个习惯后，<br />打卡时间会留在这里。</p>
+        </div>
+      </section>
+
+      <footer class="footnote">
+        <p>数据只保存在这台设备的浏览器里，每天自动重新开始。</p>
+        <p class="footnote-quiet">少一点，但每天都做一点。</p>
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+      <span id="toastText"></span>
+      <button type="button" class="toast-action" id="toastAction">撤销</button>
+    </div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
